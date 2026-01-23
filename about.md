@@ -6,7 +6,11 @@ permalink: /about/
 
 ## 关于我
 
-不对我到底要写什么
+你好，我是 calculus1437，正在学习搭建博客。
+
+## 致谢
+
+https://pianfan.github.io/build_own_website/#
 
 ## 版权声明
 
