@@ -10,7 +10,7 @@ permalink: /about/
 
 ## 致谢
 
-https://pianfan.github.io/build_own_website/#
+[零基础小白如何搭建自己的 github.io 个人网站](https://pianfan.github.io/build_own_website/#)
 
 ## 版权声明
 
