@@ -1,8 +1,8 @@
 name: "Tianye's blog"
-description: ""
+description: "博客"
 
-avatar: https://pianfan.github.io/images/avatar.png
-favicon: https://pianfan.github.io/images/favicon.ico
+avatar: 
+favicon: 
 
 navigation:
   - name: 首页
@@ -18,16 +18,16 @@ excerpt_separator: <!-- more -->
 
 footer-links:
   zhihu: 
-  email: xiongyunhan@outlook.com
+  email: 3082019899@qq.com
   facebook:
-  github: pianfan
+  github: calculus1437
   rss: welcome!
   twitter: 
   youtube:
 
-footer-text: Copyright (c) 2024-2025 Pianfan
+footer-text: Copyright (c) 2024-2025 Tianye Huang
 
-url: https://pianfan.github.io
+url: https://calculus1437.github.io
 
 permalink: /:title/
 paginate_path: /page:num/
