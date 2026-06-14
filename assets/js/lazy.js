@@ -15,14 +15,18 @@
           // 避免重复渲染
           if (el.hasAttribute('data-katex-rendered')) return;
           // 渲染该元素内的公式
-          renderMathInElement(el, {
-            delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-              {left: '\\(', right: '\\)', display: false},
-              {left: '\\[', right: '\\]', display: true}
-            ]
-          }).catch(err => console.warn('KaTeX render error', err));
+          try {
+            renderMathInElement(el, {
+              delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+              ]
+            });
+          } catch (err) {
+            console.warn('KaTeX render error', err);
+          }
           el.setAttribute('data-katex-rendered', 'true');
           // 渲染后可以选择不再观察该元素
           observer.unobserve(el);
