@@ -11,8 +11,10 @@ BACKUP_DIR = Path("posts_backup")
 NEW_HEAD_CONTENT_LINES = [
     '<link href="../assets/fonts/NotoSerifSC-VF/result.css" rel="stylesheet">',
     '<link rel="stylesheet" href="../assets/css/style.css">',
-    '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.css">',
+    # 删掉 KaTeX CSS，因为 MPE 自己会加
     '<link href="../assets/css/toc.css"  rel=stylesheet>',
+    '<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>',
+    '<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>',
     '<script src="../assets/js/lazy.js" defer></script>',
     '<script src="../assets/js/toc.js" defer></script>',
     '<link rel="icon" type="image/jpg" href="../assets/images/avatar.jpg">'
@@ -32,13 +34,16 @@ def has_target_content(content, target):
 
 
 def replace_font_family(content):
-    """替换 .markdown-preview 中的 font-family 为 'Noto Serif SC'，如果已经是则跳过"""
-    # 检查是否已包含目标字体
-    if '  font-family: "Noto Serif SC";\n  font-weight: 500;' in content:
+    # 如果已经存在 font-weight: 500 且字体正确，跳过
+    if re.search(r'\.markdown-preview\.markdown-preview\s*\{[^}]*font-family:\s*Noto Serif SC\s*;[^}]*font-weight:\s*500', content):
         return content, False
-    pattern = r'(\.markdown-preview\.markdown-preview\s*\{[^}]*?)font-family:\s*"[^"]*";'
+
+    # 匹配 font-family 行（可能带引号或不带）
+    pattern = r'(\.markdown-preview\.markdown-preview\s*\{[^}]*?font-family:\s*)(?:"[^"]*"|[^;]+)(;)'
     def replacer(match):
-        return match.group(1) + 'font-family: "Noto Serif SC";\n  font-weight: 500;'
+        # 插入新的字体名和粗细
+        return match.group(1) + '"Noto Serif SC";\n  font-weight: 500' + match.group(2)
+
     new_content = re.sub(pattern, replacer, content, flags=re.DOTALL)
     return new_content, (new_content != content)
 
