@@ -9,8 +9,20 @@
     <link href="assets/fonts/NotoSerifSC-VF/result.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.css">
     <link rel="icon" type="image/jpg" href="assets/images/avatar.jpg">
-
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
+    });
+    </script>
 </head>
 <body>
 
@@ -32,7 +44,7 @@
             </li>
             <li class="post-item">
                 <span class="post-date">2025-11-13</span>
-                <a class="post-link" href="posts/03_Understanding Analysis 习题解答 第三章 R 的基本拓扑结构.html">Understanding Analysis 习题解答 第三章 R 的基本拓扑结构</a>
+                <a class="post-link" href="posts/03_Understanding Analysis 习题解答 第三章 R 的基本拓扑结构.html">Understanding Analysis 习题解答 第三章 $\mathbb{R}$ 的基本拓扑结构</a>
             </li>
             <li class="post-item">
                 <span class="post-date">2026-01-12</span>
