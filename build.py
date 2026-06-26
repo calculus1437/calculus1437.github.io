@@ -34,14 +34,15 @@ def has_target_content(content, target):
 
 
 def replace_font_family(content):
-    # 如果已经存在 font-weight: 500 且字体正确，跳过
-    if re.search(r'\.markdown-preview\.markdown-preview\s*\{[^}]*font-family:\s*Noto Serif SC\s*;[^}]*font-weight:\s*500', content):
+    # 检查时允许可选双引号
+    if re.search(
+        r'\.markdown-preview\.markdown-preview\s*\{[^}]*font-family:\s*"?Noto Serif SC"?\s*;[^}]*font-weight:\s*500',
+        content
+    ):
         return content, False
 
-    # 匹配 font-family 行（可能带引号或不带）
     pattern = r'(\.markdown-preview\.markdown-preview\s*\{[^}]*?font-family:\s*)(?:"[^"]*"|[^;]+)(;)'
     def replacer(match):
-        # 插入新的字体名和粗细
         return match.group(1) + '"Noto Serif SC";\n  font-weight: 500' + match.group(2)
 
     new_content = re.sub(pattern, replacer, content, flags=re.DOTALL)
